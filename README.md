@@ -1,5 +1,5 @@
 # agilemarkdown
-A framework for managing backlogs using git and markdown (test)
+A framework for managing backlogs using git and markdown
 
 ## Documentation
 
