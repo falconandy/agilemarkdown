@@ -2,6 +2,7 @@ language: go
 
 go:
   - "1.10.x"
+gobuild_args: -ldflags "-X main.version=$(git log -1 --format=%cd --date=unix)"
 env:
   - "PATH=/home/travis/gopath/bin:$PATH"
 before_install:
