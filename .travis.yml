@@ -2,12 +2,11 @@ language: go
 
 go:
   - "1.10.x"
-gobuild_args: -ldflags "-X main.version=$(git log -1 --format=%cd --date=unix)"
 env:
   - "PATH=/home/travis/gopath/bin:$PATH"
 before_install:
   - go get github.com/mitchellh/gox
   - go get github.com/tcnksm/ghr
 after_success:
-  - gox -osarch="linux/amd64 windows/amd64 darwin/amd64" -output "dist/{{.Dir}}_{{.OS}}_{{.Arch}}"
+  - gox -ldflags "-X main.version=$(git log -1 --format=%cd --date=unix)" -osarch="linux/amd64 windows/amd64 darwin/amd64" -output "dist/{{.Dir}}_{{.OS}}_{{.Arch}}"
   - ghr --username falconandy --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
